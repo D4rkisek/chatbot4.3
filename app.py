@@ -17,7 +17,7 @@ client = OpenAI(
 
 MODEL = "gpt-4-1106-preview"
 
-filepath = "./hastin_direct_data.txt"
+filepath = "./hastings_direct_data.txt"
 
 file_object = client.files.create(file=open(filepath, "rb"),
                                    purpose="assistants")
@@ -38,7 +38,6 @@ def wait_for_run_completion(client, thread_id, run_id, sleep_interval=20):
                 messages = client.beta.threads.messages.list(thread_id=thread_id)
                 last_message = messages.data[0]
                 response = last_message.content[0].text.value
-                #official_response = print(f"Assistant Response: {response}")
                 return response
         except Exception as e:
             logging.error(f"An error occurred while retrieving the run: {e}")
@@ -77,6 +76,7 @@ def get_bots_response():
 
     userText = request.args.get('msg')
 
+    # Select the tailored model
     assis_id="asst_8xcCQBr7VW6I9QEXV4szLSOR"
     thread_id="thread_SHmziGMx1E3wA7Qj3uhSFQ61"
     message = userText
@@ -102,8 +102,6 @@ def refresh():
 
 @app.route('/run-python-script', methods=['POST'])
 def run_python_script():
-    # Import the Python script you want to run or directly include the code here
-    # For example, if your script is in 'your_script.py'
     import subprocess
     subprocess.Popen([sys.executable, r'C:\Users\maruf\web-chatbot\chatbot_cargame.py'])
     return jsonify({"message": "Python script is running in the background"}), 200
