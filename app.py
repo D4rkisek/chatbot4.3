@@ -10,12 +10,9 @@ import pygame
 import random
 import sys
 
-
-
-
 # Set the OpenAI API key
 client = OpenAI(
-    api_key="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",
+    api_key="key",
 )
 
 MODEL = "gpt-4-1106-preview"
@@ -66,11 +63,6 @@ app = Flask(__name__)
 #
 # just name them differently
 
-
-# Function to get a response from the chatbot
-#def get_response(userText):
-#    return chat(userText)
-
 def process_user_text(user_text):
     # Placeholder response - replace with actual processing logic
     return "You said: " + user_text
@@ -103,18 +95,10 @@ def get_bots_response():
     print(userText)
     return str(response)
 
-
 @app.route('/refresh')
 def refresh():
     time.sleep(600)  # Wait for 10 minutes
     return redirect('/refresh')
-
-
-# @app.route('/start-game', methods=['POST'])
-# def start_game():
-#     # Start the pygame application in a new thread to avoid blocking
-#     threading.Thread(target=your_pygame_script.start_game).start()
-#     return 'Game started', 200
 
 @app.route('/run-python-script', methods=['POST'])
 def run_python_script():
@@ -123,8 +107,6 @@ def run_python_script():
     import subprocess
     subprocess.Popen([sys.executable, r'C:\Users\maruf\web-chatbot\chatbot_cargame.py'])
     return jsonify({"message": "Python script is running in the background"}), 200
-
-
 
 # Run the Flask app
 if __name__ == "__main__":
