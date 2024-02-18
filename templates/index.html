@@ -92,8 +92,6 @@
       overflow: hidden;
     }
 
-
-
     .top_menu {
       background-color: #2d2c2c;
       width: 100%;
@@ -364,8 +362,6 @@
 </head>
 
 
-
-
 <body>
   
   <div class="background-img">
@@ -447,9 +443,9 @@
 
 <!-- Popup Structure -->
 <div id="popup" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 200; background: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
-  <p>Would you like to play a game whilst waiting for you to connect to our team?</p>
-  <button id="yesBtn">Yes</button>
-  <button id="noBtn">No</button>
+  <p>While we connect you to an agent, here's a game to keep you busy</p>
+  <button id="yesBtn">Play game</button>
+  <button id="noBtn">No, thanks</button>
 </div>
 
 <script>
@@ -555,7 +551,7 @@ document.getElementById("noBtn").addEventListener("click", function() {
               }
           });
       writingMessage = new Message({
-          text: 'How may I assist you with today? I am fluent in 95 languages, I am always ready to help you precisely. Just type!',
+          text: 'Hi there, what can I assist you with?',
           message_side: 'left'
       });
       writingMessage.draw();
